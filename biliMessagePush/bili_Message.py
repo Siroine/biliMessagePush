@@ -119,7 +119,6 @@ def check_new_message():
                             parsed_content = json.loads(json_message_content)
                             if message["msg_type"] == 1: # 文本消息
                                 message_content = parsed_content["content"]
-                                #msg = "title=收到B站私信&body=【昵称】：【正文】&url=&isArchive=0&icon=【头像】&group=私信提醒"
                                 Bark_PushMSG(f'{bili_API.getBiliUsername_live_byUID(message_fromUID)} 私信了你',
                                              f'{message_content}', 'bilibili://',
                                              bili_API.getBiliAvatar_live_byUID(message_fromUID), 'B站提醒')

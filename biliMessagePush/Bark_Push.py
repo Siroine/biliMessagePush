@@ -77,7 +77,7 @@ def Bark_configurePushURL():
     return
 
 def Bark_PushMSG(title, body, url=None, icon=None, group=None, isArchive=0):
-    #title=猫屋敷梨梨Official：黑神话初见day2！&body=你的关注正在直播，快去看看吧，立即前往>>&url=https://live.bilibili.com/4494478/&isArchive=0&icon=https://i1.hdslb.com/bfs/face/588991fa450feaab711d3a82c5e5f22fd6086ce0.jpg&group=直播提醒
+
     if not global_vars.Bark_PushKey:
         return False
     api_url = f'https://api.day.app/{global_vars.Bark_PushKey}/'

@@ -103,7 +103,7 @@ def getLoginUserName(cookies):
 
 
 if __name__ == "__main__":
-    ##test_uid = "8084749"
+    #test_uid = "8084749"
     avatar = getBiliAvatar_live_byUID(test_uid)
     username = getBiliUsername_live_byUID(test_uid)
 
