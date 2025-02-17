@@ -76,11 +76,15 @@ def checkCookies(cookies):
     if not cookies:
         # 用户没有登录B站
         return False
-    bili_username, bili_userUID = getLoginUserName(cookies)
-    if not bili_username or not bili_userUID:
-        # 用户登录状态已失效
-        return False
-    return True
+
+    max_retries = 3
+    for attempt in range(max_retries):
+        bili_username, bili_userUID = getLoginUserName(cookies)
+
+        if bili_username and bili_userUID:
+            return True  # 登录有效
+    # 用户登录状态已失效
+    return False
 
 def getLoginUserName(cookies):
     """
@@ -90,7 +94,17 @@ def getLoginUserName(cookies):
     """
     url = 'https://api.bilibili.com/x/space/v2/myinfo'
     response = http_safeget(url, cookies=cookies, headers=headers)
-    response_json = response.json()
+    if response is None:
+        return None, None
+
+    try:
+        response_json = response.json()
+    except Exception as e:
+        return None, None
+
+    if not isinstance(response_json, dict):
+        return None, None  # API 响应格式错误
+
     if 'data' in response_json:
         if response_json['data']['profile']['mid'] != "" and response_json['data']['profile']['name'] != "":
             user_name = response_json['data']['profile']['name']
