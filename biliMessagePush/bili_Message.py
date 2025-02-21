@@ -31,7 +31,6 @@ def check_new_message():
         print("\033[31m未填写推送Key，启动失败..\033[0m")
         return
 
-
     global_vars.check_new_message_running = True
 
     # 初始化状态
