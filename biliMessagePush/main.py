@@ -71,7 +71,6 @@ def main():
             SC_configurePushURL()
         elif choice == '5':
             clear_screen()
-            #bilibili://browser?url=https%3A%2F%2Fmessage.bilibili.com%2F
             #bilibili://space/8084749
             PUSH_test()
         elif choice == '6':

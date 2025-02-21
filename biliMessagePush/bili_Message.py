@@ -27,7 +27,7 @@ def check_new_message():
     if not bili_API.checkCookies(global_vars.bili_userCookies):
         print("\033[31mB站登录状态已失效，启动失败..\033[0m")
         return
-    if not global_vars.Bark_PushKey:
+    if not (global_vars.Bark_PushKey or global_vars.SC_PushKey):
         print("\033[31m未填写推送Key，启动失败..\033[0m")
         return
 
