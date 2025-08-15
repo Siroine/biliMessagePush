@@ -127,7 +127,6 @@ def check_new_message():
                                            f'{message_content}  \n[立即查看>>](http://qq.bilibilibot.com/jump_bilibili.html)',
                                            f'{message_content}')
 
-
                                 #bili_API.sendBiliMessage(global_vars.bili_userCookies, message_fromUID, "感谢你的私信，我将尽快回复。[自动回复]")
 
 
