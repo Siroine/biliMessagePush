@@ -29,7 +29,7 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller --onefile main.py
+          pyinstaller --onefile main.py --name biliMessage
         working-directory: ./biliMessagePush  # main.py 所在目录
 
       - name: Upload artifact
@@ -37,4 +37,3 @@ jobs:
         with:
           name: biliMessage-${{ matrix.os }}
           path: ./biliMessagePush/dist/biliMessage*
-

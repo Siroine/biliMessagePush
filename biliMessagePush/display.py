@@ -35,7 +35,7 @@ def display_menu():
 
 
     print("\n======= bili私信推送 =======")
-    print("== Made by 白月影Channel ==")
+    print(f"== Made by {bili_API.getBiliUsername_live_byUID(8084749)} ==")
     print(f"\n当前运行状态：{running_display}")
     print(f"BarkKey: {Bark_userDisplay}")
     print(f"Server酱Key: {SC_userDisplay}")
