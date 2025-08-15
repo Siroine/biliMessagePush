@@ -2,8 +2,8 @@ name: Build executables and Release
 
 on:
   push:
-    tags:
-      - 'v*'  # 推 tag 才触发，比如 v1.0.0
+    branches:
+  workflow_dispatch:   # 允许手动触发
 
 jobs:
   build:
