@@ -100,7 +100,7 @@ def check_new_message():
                     #print(f"UID-> {message_fromUID}   私信数量-> {unread_count}")
                     # 获取私信内容
                     webpage_response = http_safeget(
-                        f'https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?talker_id={message_fromUID}&session_type=1&size={unread_count}',
+                        f'https://api.vc.bilibili.com/svr_sync/v1/svr_sync/fetch_session_msgs?talker_id={message_fromUID}&session_type=1&size={unread_count + 1}',
                         cookies=global_vars.bili_userCookies, headers=headers)
                     #print(f"对话详情-> {webpage_response.text}")
 
@@ -113,8 +113,9 @@ def check_new_message():
                     # 遍历私信记录
                     for message in messages:
                         msg_timestamp = message["timestamp"]
+                        msg_sender_uid = message["sender_uid"]
                         #print(f"时间戳-> {msg_timestamp} / {last_check_timestamp}")
-                        if message["timestamp"] >= last_check_timestamp:
+                        if msg_timestamp >= last_check_timestamp and msg_sender_uid == message_fromUID:
                             json_message_content = message["content"]
                             parsed_content = json.loads(json_message_content)
                             if message["msg_type"] == 1: # 文本消息
